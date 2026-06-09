@@ -16,7 +16,7 @@ if ("IntersectionObserver" in window) {
                 }
             });
         },
-        { threshold: 0.16 }
+        { rootMargin: "0px 0px -8% 0px", threshold: 0.04 }
     );
 
     revealElements.forEach((element) => revealObserver.observe(element));
@@ -52,9 +52,10 @@ if (bubbleArea && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
         const zone = safeZones[Math.floor(Math.random() * safeZones.length)];
         const bubble = document.createElement("span");
-        const size = Math.round(randomBetween(56, 82));
-        const drift = Math.round(randomBetween(-24, 24));
-        const duration = randomBetween(2.6, 3.4).toFixed(2);
+        const size = Math.round(randomBetween(62, 90));
+        const drift = Math.round(randomBetween(-34, 34));
+        const rotate = Math.round(randomBetween(-10, 10));
+        const duration = randomBetween(2.8, 3.65).toFixed(2);
 
         bubble.className = "service-bubble";
         bubble.textContent = pickLabel();
@@ -63,6 +64,7 @@ if (bubbleArea && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
         bubble.style.setProperty("--bubble-size", `${size}px`);
         bubble.style.setProperty("--bubble-drift", `${drift}px`);
         bubble.style.setProperty("--bubble-duration", `${duration}s`);
+        bubble.style.setProperty("--bubble-rotate", `${rotate}deg`);
 
         bubbleArea.appendChild(bubble);
         bubble.addEventListener("animationend", () => bubble.remove(), { once: true });
@@ -76,5 +78,5 @@ if (bubbleArea && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
         if (Math.random() > 0.68) {
             window.setTimeout(createBubble, 320);
         }
-    }, 1150);
+    }, 980);
 }
