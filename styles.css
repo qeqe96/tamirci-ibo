@@ -446,7 +446,11 @@ h3 {
     font-weight: 950;
     opacity: 0;
     transform: translateY(18px) scale(0.35);
-    animation: bubblePop 3.1s ease-in-out forwards;
+    animation: none;
+}
+
+.hero.is-visible .quick-services.bubbles span {
+    animation: bubblePop 3.2s ease-in-out forwards;
 }
 
 .quick-services.bubbles span::before {
@@ -474,25 +478,25 @@ h3 {
 .quick-services.bubbles span:nth-child(1) {
     left: 4%;
     top: -22px;
-    animation-delay: 0.2s;
+    animation-delay: 0.35s;
 }
 
 .quick-services.bubbles span:nth-child(2) {
     right: 12%;
     top: 10px;
-    animation-delay: 0.55s;
+    animation-delay: 0.75s;
 }
 
 .quick-services.bubbles span:nth-child(3) {
     left: 34%;
     bottom: -18px;
-    animation-delay: 0.9s;
+    animation-delay: 1.15s;
 }
 
 .quick-services.bubbles span:nth-child(4) {
     right: 1%;
     bottom: -4px;
-    animation-delay: 1.25s;
+    animation-delay: 1.55s;
 }
 
 .services-grid {
@@ -746,6 +750,39 @@ h3 {
         font-size: clamp(2rem, 9.4vw, 3rem);
         line-height: 1.12;
         letter-spacing: -0.04em;
+    }
+
+    .hero-title-wrap {
+        padding-top: 72px;
+        padding-bottom: 78px;
+        margin-top: -18px;
+        margin-bottom: -28px;
+    }
+
+    .quick-services.bubbles span {
+        min-width: 74px;
+        min-height: 74px;
+        font-size: 0.82rem;
+    }
+
+    .quick-services.bubbles span:nth-child(1) {
+        left: 0;
+        top: 4px;
+    }
+
+    .quick-services.bubbles span:nth-child(2) {
+        right: 0;
+        top: 22px;
+    }
+
+    .quick-services.bubbles span:nth-child(3) {
+        left: 8%;
+        bottom: 8px;
+    }
+
+    .quick-services.bubbles span:nth-child(4) {
+        right: 2%;
+        bottom: 0;
     }
 
     h2 {
