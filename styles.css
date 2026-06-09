@@ -128,8 +128,50 @@ a {
 }
 
 .brand-text {
-    font-size: clamp(1.28rem, 2.2vw, 1.7rem);
-    line-height: 1;
+    position: relative;
+    display: inline-block;
+    padding: 6px 4px 10px;
+    font-family: "Audiowide", "Inter", system-ui, sans-serif;
+    font-size: clamp(1.42rem, 2.7vw, 2.15rem);
+    line-height: 0.95;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+    color: transparent;
+    background: linear-gradient(115deg, #fff8d8 0%, #ffb000 28%, #ff6b00 54%, #00d4ff 78%, #ffffff 100%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 0 18px rgba(255, 176, 0, 0.28), 0 5px 18px rgba(0, 0, 0, 0.55);
+    filter: drop-shadow(0 0 10px rgba(255, 176, 0, 0.22));
+    animation: brandShine 4.2s ease-in-out infinite;
+}
+
+.brand-text::before,
+.brand-text::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+}
+
+.brand-text::before {
+    left: 2px;
+    right: 6px;
+    bottom: 0;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), transparent);
+    box-shadow: 0 0 16px rgba(255, 176, 0, 0.5);
+}
+
+.brand-text::after {
+    width: 8px;
+    height: 8px;
+    top: -2px;
+    right: -8px;
+    border-radius: 50%;
+    background: #fff4b8;
+    box-shadow: 0 0 0 4px rgba(255, 176, 0, 0.12), 0 0 20px rgba(255, 176, 0, 0.85);
+    animation: sparkle 2.4s ease-in-out infinite;
 }
 
 .nav-actions {
@@ -430,23 +472,25 @@ h3 {
 
 .quick-services.bubbles span {
     position: absolute;
+    left: var(--bubble-left, 8%);
+    top: var(--bubble-top, 74%);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 76px;
-    min-height: 76px;
+    min-width: var(--bubble-size, 76px);
+    min-height: var(--bubble-size, 76px);
     padding: 13px;
     color: #111;
     text-align: center;
-    background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.72), rgba(255, 176, 0, 0.5) 44%, rgba(255, 128, 0, 0.42));
+    background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.74), rgba(255, 176, 0, 0.5) 44%, rgba(255, 128, 0, 0.42));
     border: 1px solid rgba(255, 255, 255, 0.34);
     border-radius: 999px;
     box-shadow: 0 16px 34px rgba(255, 176, 0, 0.12), inset -10px -12px 20px rgba(96, 48, 0, 0.1);
     font-size: 0.86rem;
     font-weight: 950;
     opacity: 0;
-    transform: translateY(18px) scale(0.55);
-    animation: bubbleLoop 7.6s ease-in-out infinite;
+    transform: translate(-50%, 18px) scale(0.55);
+    animation: bubblePop var(--bubble-duration, 3.2s) ease-out forwards;
 }
 
 .quick-services.bubbles span::before {
@@ -472,27 +516,38 @@ h3 {
 }
 
 .quick-services.bubbles span:nth-child(1) {
-    left: 2%;
-    top: 72%;
-    animation-delay: 0s;
+    --bubble-left: 8%;
+    --bubble-top: 74%;
 }
 
 .quick-services.bubbles span:nth-child(2) {
-    right: 3%;
-    top: 76%;
-    animation-delay: 0.9s;
+    --bubble-left: 92%;
+    --bubble-top: 78%;
 }
 
 .quick-services.bubbles span:nth-child(3) {
-    left: 8%;
-    top: 78%;
-    animation-delay: 3.8s;
+    --bubble-left: 18%;
+    --bubble-top: 84%;
 }
 
 .quick-services.bubbles span:nth-child(4) {
-    right: 8%;
-    top: 70%;
-    animation-delay: 4.7s;
+    --bubble-left: 82%;
+    --bubble-top: 70%;
+}
+
+.quick-services.bubbles span:nth-child(5) {
+    --bubble-left: 50%;
+    --bubble-top: 88%;
+}
+
+.quick-services.bubbles span:nth-child(6) {
+    --bubble-left: 28%;
+    --bubble-top: 72%;
+}
+
+.quick-services.bubbles span:nth-child(7) {
+    --bubble-left: 72%;
+    --bubble-top: 84%;
 }
 
 .services-grid {
@@ -735,7 +790,9 @@ h3 {
     }
 
     .brand-text {
-        font-size: 1.22rem;
+        font-size: 1.28rem;
+        letter-spacing: 0.01em;
+        padding-right: 0;
     }
 
     .hero-grid {
@@ -756,31 +813,8 @@ h3 {
     }
 
     .quick-services.bubbles span {
-        min-width: 58px;
-        min-height: 58px;
+        --bubble-size: 58px;
         font-size: 0.72rem;
-    }
-
-    .quick-services.bubbles span:nth-child(1) {
-        left: 1%;
-        top: 76%;
-    }
-
-    .quick-services.bubbles span:nth-child(2) {
-        right: 2%;
-        top: 78%;
-    }
-
-    .quick-services.bubbles span:nth-child(3) {
-        left: 10%;
-        top: 80%;
-        bottom: auto;
-    }
-
-    .quick-services.bubbles span:nth-child(4) {
-        right: 8%;
-        top: 72%;
-        bottom: auto;
     }
 
     h2 {
@@ -998,36 +1032,59 @@ h3 {
     }
 }
 
-@keyframes bubbleLoop {
+@keyframes bubblePop {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 14px) scale(0.52);
+        filter: blur(0);
+    }
 
-    0%,
-    38%,
+    14% {
+        opacity: 0.5;
+        transform: translate(-50%, 0) scale(1);
+    }
+
+    58% {
+        opacity: 0.5;
+        transform: translate(calc(-50% + var(--bubble-drift, 10px)), -30px) scale(1.03);
+    }
+
+    82% {
+        opacity: 0.48;
+        transform: translate(calc(-50% + var(--bubble-drift, 10px)), -46px) scale(1.13);
+        filter: blur(0);
+    }
+
     100% {
         opacity: 0;
-        transform: translateY(10px) scale(0.58);
-        filter: blur(0);
-    }
-
-    7% {
-        opacity: 0.5;
-        transform: translateY(0) scale(1);
-    }
-
-    22% {
-        opacity: 0.5;
-        transform: translateY(-26px) scale(1.02);
-    }
-
-    31% {
-        opacity: 0.48;
-        transform: translateY(-38px) scale(1.14);
-        filter: blur(0);
-    }
-
-    37% {
-        opacity: 0;
-        transform: translateY(-46px) scale(1.65);
+        transform: translate(calc(-50% + var(--bubble-drift, 10px)), -58px) scale(1.65);
         filter: blur(4px);
+    }
+}
+
+@keyframes brandShine {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: scale(0.78) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.18) rotate(18deg);
     }
 }
 
