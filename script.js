@@ -24,15 +24,28 @@ if ("IntersectionObserver" in window) {
     revealElements.forEach((element) => element.classList.add("is-visible"));
 }
 
+const typewriterElement = document.querySelector("[data-typewriter]");
+
+if (typewriterElement && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const typewriterText = typewriterElement.dataset.typewriter || typewriterElement.textContent;
+    typewriterElement.textContent = "";
+    typewriterElement.classList.add("is-typing");
+
+    [...typewriterText].forEach((character, index) => {
+        window.setTimeout(() => {
+            typewriterElement.textContent += character;
+
+            if (index === typewriterText.length - 1) {
+                window.setTimeout(() => typewriterElement.classList.remove("is-typing"), 650);
+            }
+        }, 70 * index + 280);
+    });
+}
+
 const bubbleArea = document.querySelector("[data-bubbles]");
 
 if (bubbleArea && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const bubbleLabels = ["Akü", "Triger", "Oto Cam", "Kapı Kilidi", "Dinamo", "Kriko", "Antifriz"];
-    const safeZones = [
-        { minLeft: 4, maxLeft: 24, minTop: 66, maxTop: 86 },
-        { minLeft: 76, maxLeft: 96, minTop: 66, maxTop: 86 },
-        { minLeft: 22, maxLeft: 78, minTop: 78, maxTop: 92 }
-    ];
+    const bubbleLabels = ["Akü", "Triger", "Oto Cam", "Kapı Kilidi", "Dinamo", "Kriko", "Antifriz", "Yol Yardım"];
     let labelIndex = Math.floor(Math.random() * bubbleLabels.length);
 
     const randomBetween = (min, max) => Math.random() * (max - min) + min;
@@ -46,21 +59,20 @@ if (bubbleArea && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
     const createBubble = () => {
         const activeBubbles = bubbleArea.querySelectorAll(".service-bubble");
 
-        if (activeBubbles.length >= 2) {
+        if (activeBubbles.length >= 4) {
             return;
         }
 
-        const zone = safeZones[Math.floor(Math.random() * safeZones.length)];
         const bubble = document.createElement("span");
-        const size = Math.round(randomBetween(62, 90));
-        const drift = Math.round(randomBetween(-34, 34));
+        const size = Math.round(randomBetween(54, 92));
+        const drift = Math.round(randomBetween(-46, 46));
         const rotate = Math.round(randomBetween(-10, 10));
-        const duration = randomBetween(2.8, 3.65).toFixed(2);
+        const duration = randomBetween(4.2, 5.8).toFixed(2);
 
         bubble.className = "service-bubble";
         bubble.textContent = pickLabel();
-        bubble.style.setProperty("--bubble-left", `${randomBetween(zone.minLeft, zone.maxLeft).toFixed(1)}%`);
-        bubble.style.setProperty("--bubble-top", `${randomBetween(zone.minTop, zone.maxTop).toFixed(1)}%`);
+        bubble.style.setProperty("--bubble-left", `${randomBetween(4, 96).toFixed(1)}%`);
+        bubble.style.setProperty("--bubble-top", `${randomBetween(58, 96).toFixed(1)}%`);
         bubble.style.setProperty("--bubble-size", `${size}px`);
         bubble.style.setProperty("--bubble-drift", `${drift}px`);
         bubble.style.setProperty("--bubble-duration", `${duration}s`);
@@ -78,5 +90,5 @@ if (bubbleArea && !window.matchMedia("(prefers-reduced-motion: reduce)").matches
         if (Math.random() > 0.68) {
             window.setTimeout(createBubble, 320);
         }
-    }, 980);
+    }, 720);
 }
