@@ -858,52 +858,93 @@ h3 {
 }
 
 @media (max-width: 559px) {
+    body {
+        background:
+            radial-gradient(circle at 12% 74%, rgba(255, 176, 0, 0.18), transparent 16rem),
+            radial-gradient(circle at 88% 16%, rgba(255, 176, 0, 0.12), transparent 12rem),
+            linear-gradient(180deg, #070a0f 0%, #0a0e14 100%);
+    }
+
     .container {
         width: min(100% - 44px, var(--container));
     }
 
+    .site-header {
+        background: rgba(6, 9, 13, 0.98);
+        border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
+
     .navbar.container {
-        width: calc(100% - 8px);
-        margin-left: 4px;
-        margin-right: 4px;
+        width: calc(100% - 34px);
+        margin-left: 17px;
+        margin-right: 17px;
     }
 
     .section-pad {
-        padding: 48px 0;
+        padding: 36px 0;
     }
 
     .navbar {
-        min-height: 98px;
-        gap: 4px;
+        min-height: 152px;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .brand {
+        flex: 1 1 auto;
+        gap: 12px;
     }
 
     .brand-mark {
-        width: 128px;
-        height: 88px;
+        width: 82px;
+        height: 96px;
         border-radius: 0;
     }
 
     .brand-text {
-        font-size: 1.28rem;
-        letter-spacing: 0.01em;
-        padding-right: 0;
+        font-size: clamp(1.9rem, 8vw, 2.45rem);
+        letter-spacing: 0.025em;
+        padding: 8px 2px 14px;
+        text-shadow: 0 0 18px rgba(255, 176, 0, 0.5), 0 4px 18px rgba(0, 0, 0, 0.7);
     }
 
     .top-badge {
-        width: 58px;
-        height: 58px;
-        flex-basis: 58px;
-        font-size: 0.58rem;
+        position: absolute;
+        right: 22px;
+        top: 172px;
+        z-index: 5;
+        width: 92px;
+        height: 92px;
+        flex-basis: 92px;
+        font-size: 1.08rem;
+        line-height: 0.92;
+        box-shadow: 0 0 28px rgba(255, 176, 0, 0.32), inset 0 0 22px rgba(255, 255, 255, 0.09);
+    }
+
+    .hero {
+        padding-top: 70px;
+    }
+
+    .hero-bg {
+        opacity: 0.72;
+        background-size: 82px 82px;
     }
 
     .hero-grid {
         gap: 28px;
     }
 
+    .hero-copy {
+        position: relative;
+        z-index: 2;
+    }
+
     h1 {
-        font-size: clamp(2rem, 9.4vw, 3rem);
-        line-height: 1.12;
-        letter-spacing: -0.04em;
+        max-width: 94%;
+        font-size: clamp(3.2rem, 11.9vw, 5rem);
+        line-height: 1.08;
+        letter-spacing: -0.055em;
+        text-shadow: 0 6px 18px rgba(0, 0, 0, 0.62);
     }
 
     .hero-title-wrap {
@@ -911,6 +952,10 @@ h3 {
         padding-bottom: 0;
         margin-top: 0;
         margin-bottom: 0;
+    }
+
+    .quick-services.bubbles {
+        display: none;
     }
 
     .quick-services.bubbles span {
@@ -930,9 +975,12 @@ h3 {
     }
 
     .eyebrow {
-        font-size: 0.72rem;
+        max-width: 72%;
+        margin-bottom: 26px;
+        color: #ffb000;
+        font-size: 1rem;
         line-height: 1.5;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.055em;
     }
 
     .hero-subtitle,
@@ -941,8 +989,13 @@ h3 {
     .contact-copy>p,
     .service-body p,
     .contact-item p {
-        font-size: 0.98rem;
-        line-height: 1.85;
+        font-size: 1.12rem;
+        line-height: 1.9;
+    }
+
+    .hero-subtitle {
+        color: rgba(247, 249, 252, 0.68);
+        margin-bottom: 36px;
     }
 
     .hero-cta,
@@ -964,7 +1017,7 @@ h3 {
     }
 
     .trust-row {
-        gap: 14px;
+        gap: 18px;
         margin-top: 26px;
     }
 
@@ -974,20 +1027,42 @@ h3 {
     }
 
     .trust-card {
-        min-height: 86px;
-        padding: 14px;
-        border-color: rgba(255, 176, 0, 0.6);
-        box-shadow: 0 0 18px rgba(255, 176, 0, 0.1), 0 14px 34px rgba(0, 0, 0, 0.24);
+        min-height: 150px;
+        grid-template-columns: 140px 1fr;
+        column-gap: 20px;
+        padding: 28px 30px;
+        border-radius: 30px;
+        background: linear-gradient(135deg, rgba(255, 176, 0, 0.12), rgba(255, 255, 255, 0.045));
+        border-color: rgba(255, 217, 135, 0.76);
+        box-shadow: 0 0 24px rgba(255, 176, 0, 0.13), 0 18px 52px rgba(0, 0, 0, 0.34), inset 0 0 36px rgba(255, 176, 0, 0.04);
     }
 
     .trust-icon {
-        width: 48px;
-        height: 48px;
-        font-size: 1.42rem;
+        width: 110px;
+        height: 110px;
+        border-radius: 24px;
+        color: #ffd98a;
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid rgba(255, 217, 135, 0.22);
+        font-size: 2.6rem;
     }
 
-    .hero-card img {
-        min-height: 320px;
+    .trust-row strong {
+        font-size: 1.92rem;
+    }
+
+    .trust-row span:not(.trust-icon) {
+        font-size: 1.18rem;
+    }
+
+    .text-card {
+        display: block;
+        min-height: 138px;
+        padding-top: 34px;
+    }
+
+    .hero-card {
+        display: none;
     }
 
     .status-card {
@@ -1027,16 +1102,25 @@ h3 {
     }
 
     .mobile-sticky {
-        left: 14px;
-        right: 14px;
-        gap: 12px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        gap: 16px;
+        padding: 14px;
+        border-radius: 28px;
+        background: rgba(8, 12, 17, 0.94);
     }
 
     .mobile-sticky a {
-        min-height: 56px;
-        font-size: 0.95rem;
+        min-height: 76px;
+        border-radius: 22px;
+        font-size: 1.22rem;
         line-height: 1.2;
         text-align: center;
+    }
+
+    .sticky-call {
+        box-shadow: 0 10px 24px rgba(255, 176, 0, 0.28);
     }
 }
 
